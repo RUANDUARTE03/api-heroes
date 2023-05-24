@@ -1,0 +1,35 @@
+# POST http://localhost:3000/api/client/create
+# Content-Type: application/json
+
+# {
+#   "firstName": "Gisneiane",
+#   "lastName": "Temoteo",
+#   "email": "gigi_temoteo@hotmail.com.com",
+#   "role": "admin",
+#   "password": "Ruan@5995"
+# }
+
+# POST http://localhost:3000/api/auth/login
+# Content-Type: application/json
+
+# {
+#   "email": "ruanduarte0300@gmail.com",
+#   "password": "Ruan@5995"
+# }
+
+# POST http://localhost:3000/api/heroe/create
+# Content-Type: application/json
+
+# {
+#   "userId": "646cd30c8d787460e20cb09a",
+#   "name": "Harvey",
+#   "classHeroe": "B",
+#   "typeHeroe": "Fire"
+# }
+
+GET http://localhost:4000/api/heroe/list
+Content-Type: application/json
+
+{
+  "userId": "646cd30c8d787460e20cb09a"
+}
