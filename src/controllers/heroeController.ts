@@ -6,6 +6,7 @@ const heroeController = {
     try {
       const response = await HeroeModel.create({
         ...req.body,
+        inBatle: false,
         user: req.body.userId,
       });
 
@@ -77,6 +78,33 @@ const heroeController = {
       );
 
       return res.status(200).json({ isError: false, message: "Updated" });
+    } catch (error) {
+      res.status(400).json({ error, isError: true });
+    }
+  },
+
+  updateAllToNotBatle: async (req: Request, res: Response) => {
+    try {
+      HeroeModel.updateMany({}, { $set: { inBatle: false } });
+
+      return res.status(200).json({ isError: false, message: "Updated All" });
+    } catch (error) {
+      res.status(400).json({ error, isError: true });
+    }
+  },
+
+  removeToBatle: async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const heroe = await HeroeModel.findOneAndUpdate(
+        { _id: id },
+        { inBatle: false },
+        {
+          new: true,
+        }
+      );
+
+      return res.status(200).json({ isError: false, message: "Updated", heroe });
     } catch (error) {
       res.status(400).json({ error, isError: true });
     }

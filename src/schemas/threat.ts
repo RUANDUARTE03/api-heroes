@@ -24,6 +24,9 @@ const ThreatSchema = new Schema(
     },
     timeDuration: {
       type: Date
+    },
+    exactDuration: {
+      type: Date
     }
   },
   {

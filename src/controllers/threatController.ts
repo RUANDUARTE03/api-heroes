@@ -1,15 +1,27 @@
 import ThreatModel from "../schemas/threat";
+import HeroeModel from "../schemas/heroe";
 import { Request, Response } from "express";
 
 const threatController = {
   create: async (req: Request, res: Response) => {
     try {
+      const { heroeId } = req.body;
       const response = await ThreatModel.create({
         ...req.body,
+        heroe: heroeId
       });
+
+      const heroe = await HeroeModel.findOneAndUpdate(
+        { _id: heroeId },
+        { inBatle: true },
+        {
+          new: true,
+        }
+      );
 
       return res.status(200).json({
         response,
+        heroe,
         isError: false,
         message: "Threat created with success",
       });
@@ -20,7 +32,9 @@ const threatController = {
 
   getAll: async (req: Request, res: Response) => {
     try {
-      const getAllThreat = await ThreatModel.find().sort({ createdAt: -1 }).exec();
+      const getAllThreat = await ThreatModel.find()
+        .sort({ createdAt: -1 })
+        .exec();
 
       return res.status(200).json(getAllThreat);
     } catch (error) {
@@ -28,20 +42,11 @@ const threatController = {
     }
   },
 
-  sendHeroe: async (req: Request, res: Response) => {
+  deleteAll: async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-      const { heroeId, timeDuration } = req.body;
+      await ThreatModel.deleteMany();
 
-      await ThreatModel.findOneAndUpdate(
-        { _id: id },
-        { heroeId, timeDuration, isCombat: true },
-        {
-          new: true,
-        }
-      );
-
-      return res.status(200).json({ isError: false, message: "Send Heroe" });
+      return res.status(200).json({ isError: false, message: "Removed all" });
     } catch (error) {
       res.status(400).json({ error, isError: true });
     }

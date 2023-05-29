@@ -22,12 +22,16 @@ const HeroeSchema = new Schema({
   },
   latitude: {
     type: String,
-    required: true
+    required: true,
   },
   longitude: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
+  inBatle: {
+    type: Boolean,
+    required: true,
+  },
 });
 
 export default mongoose.model("Heroe", HeroeSchema);

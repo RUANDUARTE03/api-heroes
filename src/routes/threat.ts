@@ -6,8 +6,6 @@ const Router = express.Router();
 
 Router.post("/create", auth, threatController.create);
 Router.get("/getAll/", auth, threatController.getAll);
-Router.post("/sendHeroe/:id", threatController.sendHeroe);
-// Router.get("/list/:userId", auth, heroeController.getAllByUser);
-// Router.delete("/remove/:id", heroeController.removeHeroe);
+Router.post("/deleteAll", threatController.deleteAll);
 
 export default Router;
