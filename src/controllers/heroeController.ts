@@ -65,12 +65,12 @@ const heroeController = {
 
   updateHeroe: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { name, typeHeroe, classHeroe } = req.body;
+    const { name, typeHeroe, classHeroe, latitude, longitude } = req.body;
 
     try {
       await HeroeModel.findOneAndUpdate(
         { _id: id },
-        { name, typeHeroe, classHeroe },
+        { name, typeHeroe, classHeroe, latitude, longitude },
         {
           new: true,
         }

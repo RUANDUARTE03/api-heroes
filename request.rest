@@ -1,15 +1,15 @@
-# POST http://localhost:3000/api/client/create
+# POST http://localhost:4000/api/client/create
 # Content-Type: application/json
 
 # {
-#   "firstName": "Gisneiane",
-#   "lastName": "Temoteo",
-#   "email": "gigi_temoteo@hotmail.com.com",
+#   "firstName": "ZRP",
+#   "lastName": "ZRP",
+#   "email": "zrp@gmail.com",
 #   "role": "admin",
-#   "password": "Ruan@5995"
+#   "password": "zrp@123"
 # }
 
-# POST http://localhost:3000/api/auth/login
+# POST http://localhost:4000/api/auth/login
 # Content-Type: application/json
 
 # {
@@ -27,9 +27,12 @@
 #   "typeHeroe": "Fire"
 # }
 
-GET http://localhost:4000/api/heroe/list
-Content-Type: application/json
+# GET http://localhost:4000/api/heroe/list
+# Content-Type: application/json
 
-{
-  "userId": "646cd30c8d787460e20cb09a"
-}
+# {
+#   "userId": "646cd30c8d787460e20cb09a"
+# }
+
+# GET http://localhost:4000/api/threats/getLastThreat
+# Content-Type: application/json

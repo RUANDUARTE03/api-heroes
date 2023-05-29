@@ -20,6 +20,14 @@ const HeroeSchema = new Schema({
     type: String,
     required: true,
   },
+  latitude: {
+    type: String,
+    required: true
+  },
+  longitude: {
+    type: String,
+    required: true
+  }
 });
 
 export default mongoose.model("Heroe", HeroeSchema);
